@@ -9,11 +9,11 @@ import pymysql
 
 def gettokenfromCP():
 
-    client = BackendApplicationClient(client_id="RGU-xq-jXxa0gPkku")
+    client = BackendApplicationClient(client_id="******")
     oauth = OAuth2Session(client=client)
     response = oauth.fetch_token(token_url="https://io.catchpoint.com/ui/api/token",
-                                 client_id="RGU-xq-jXxa0gPkku",
-                                 client_secret="dc32fc9a-82a3-4ff7-a161-f610c9e12008")
+                                 client_id="******",
+                                 client_secret="******")
     token = response.get("access_token")
     return token
 
@@ -50,16 +50,10 @@ def main():
 
     global token
     token = gettokenfromCP()
-    testids = {#'419229': 'OLP Data Blob - China-PRD-GetVersionedBlob-SLA-Pri',
-               #'461388': 'OLP Data Blob - China-PRD-PutVersionedBlob-SLA-Pri',
-               #'513459': 'OLP 1.0 Ingestion - China-PRD-WriteStreamData-SLA-Pri',
-               #'513463': 'OLP Data Stream - China-PRD-ReadStreamData-SLA-Pri',
-               #'513468': 'OLP Data Volatile Blob - China-PRD-GetVolatileBlob-SLA-Pri',
-               '513469': 'OLP Data Volatile Blob - China-PRD-PutVolatileBlob-SLA-Pri',
-               '522541': 'OLP Pipeline Management - China-PRD-CreatePipeline-SLA-Pri'}
+    testids = {'yourtestid':"yourtestname"}
 
     timeperiod = ['2020-02-01', '2020-02-02', '2020-02-03', '2020-02-04', '2020-02-05', '2020-02-06', '2020-02-07', '2020-02-08', '2020-02-09','2020-02-10', '2020-02-11', '2020-02-12', '2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19', '2020-02-20', '2020-02-21', '2020-02-22', '2020-02-23', '2020-02-24', '2020-02-25', '2020-02-26', '2020-02-27', '2020-02-28', '2020-02-29', '2020-03-01']
-    conn = pymysql.connect(host="localhost", user='root', password='Ops1234$', database='mysql', charset='utf8')
+    conn = pymysql.connect(host="yourhost", user='user', password='******', database='mysql', charset='utf8')
     try:
         getTemplate(testids, timeperiod, conn)
 
